@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traditional Form Demo with Tailwind CSS - CS-15 Lab Activity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            500: '#667eea',
+                            600: '#5a6fd8',
+                            700: '#4c5ed4'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles that complement Tailwind */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-btn:hover {
+            background: linear-gradient(135deg, #5a6fd8 0%, #6a4195 100%);
+        }
+        
+        .input-focus:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .btn-hover-effect {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-hover-effect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg min-h-screen p-5">
+        <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <!-- Header -->
+            <div class="gradient-bg text-white text-center py-12 px-5">
+                <h1 class="text-4xl md:text-5xl font-bold mb-3">📝 Traditional Form Demo</h1>
+                <p class="opacity-90 text-lg md:text-xl">HTML, CSS & JavaScript Validation with Tailwind</p>
+            </div>
+            
+            <!-- Form Container -->
+            <div class="p-8 md:p-10">
+                <!-- Demo Note -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
+                    <h3 class="text-blue-900 font-semibold mb-2 text-lg">🎯 Demo Features</h3>
+                    <p class="text-blue-700">This form demonstrates traditional web form validation using pure HTML, CSS, and JavaScript with Tailwind CSS styling. All validation happens in real-time as you type!</p>
+                </div>
+
+                <form id="registrationForm" novalidate class="space-y-6">
+                    <!-- Basic Information Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div class="space-y-2">
+                            <label for="fullName" class="block text-sm font-semibold text-gray-700">
+                                Full Name <span class="text-red-500">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="fullName" 
+                                name="fullName" 
+                                required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-gray-50 text-gray-900 transition-all duration-300 focus:outline-none focus:border-primary-500 focus:bg-white input-focus"
+                                placeholder="Enter your full name"
+                            >
+                            <div class="error-message text-red-500 text-sm mt-1 hidden" id="fullNameError"></div>
+                            <div class="success-message text-green-500 text-sm mt-1 hidden" id="fullNameSuccess">✓ Looks good!</div>
+                        </div>
+
+                        <!-- Username -->
+                        <div class="space-y-2">
+                            <label for="username" class="block text-sm font-semibold text-gray-700">
+                                Username <span class="text-red-500">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-gray-50 text-gray-900 transition-all duration-300 focus:outline-none focus:border-primary-500 focus:bg-white input-focus"
+                                placeholder="Choose a username"
+                            >
+                            <div class="error-message text-red-500 text-sm mt-1 hidden" id="usernameError"></div>
+                            <div class="success-message text-green-500 text-sm mt-1 hidden" id="usernameSuccess">✓ Username available!</div>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="space-y-2">
+                        <label for="email" class="block text-sm font-semibold text-gray-700">
+                            Email Address <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-gray-50 text-gray-900 transition-all duration-300 focus:outline-none focus:border-primary-500 focus:bg-white input-focus"
+                            placeholder="your.email@example.com"
+                        >
+                        <div class="error-message text-red-500 text-sm mt-1 hidden" id="emailError"></div>
+                        <div class="success-message text-green-500 text-sm mt-1 hidden" id="emailSuccess">✓ Valid email address!</div>
+                    </div>
+
+                    <!-- Password Fields -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Password -->
+                        <div class="space-y-2">
+                            <label for="password" class="block text-sm font-semibold text-gray-700">
+                                Password <span class="text-red-500">*</span>
+                            </label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                required 
+                                minlength="8"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-gray-50 text-gray-900 transition-all duration-300 focus:outline-none focus:border-primary-500 focus:bg-white input-focus"
+                                placeholder="Choose a strong password"
+                            >
+                            <div class="error-message text-red-500 text-sm mt-1 hidden" id="passwordError"></div>
+                            <div class="success-message text-green-500 text-sm mt-1 hidden" id="passwordSuccess">✓ Strong password!</div>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="space-y-2">
+                            <label for="confirmPassword" class="block text-sm font-semibold text-gray-700">
+                                Confirm Password <span class="text-red-500">*</span>
+                            </label>
+                            <input 
+                                type="password" 
+                                id="confirmPassword" 
+                                name="confirmPassword" 
+                                required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-gray-50 text-gray-900 transition-all duration-300 focus:outline-none focus:border-primary-500 focus:bg-white input-focus"
+                                placeholder="Confirm your password"
+                            >
+                            <div class="error-message text-red-500 text-sm mt-1 hidden" id="confirmPasswordError"></div>
+                            <div class="success-message text-green-500 text-sm mt-1 hidden" id="confirmPasswordSuccess">✓ Passwords match!</div>
+                        </div>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-semibold text-gray-700">
+                            Gender <span class="text-red-500">*</span>
+                        </label>
+                        <div class="flex flex-wrap gap-6">
+                            <div class="flex items-center space-x-2">
+                                <input type="radio" id="male" name="gender" value="male" required class="w-4 h-4 text-primary-500 focus:ring-primary-500">
+                                <label for="male" class="text-sm font-medium text-gray-700">Male</label>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <input type="radio" id="female" name="gender" value="female" class="w-4 h-4 text-primary-500 focus:ring-primary-500">
+                                <label for="female" class="text-sm font-medium text-gray-700">Female</label>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <input type="radio" id="other" name="gender" value="other" class="w-4 h-4 text-primary-500 focus:ring-primary-500">
+                                <label for="other" class="text-sm font-medium text-gray-700">Other</label>
+                            </div>
+                        </div>
+                        <div class="error-message text-red-500 text-sm mt-1 hidden" id="genderError"></div>
+                        <div class="success-message text-green-500 text-sm mt-1 hidden" id="genderSuccess">✓ Gender selected!</div>
+                    </div>
+
+                    <!-- Hobbies -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-semibold text-gray-700">
+                            Hobbies <span class="text-red-500">*</span> (Select at least one)
+                        </label>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" id="reading" name="hobbies" value="reading" class="w-4 h-4 text-primary-500 focus:ring-primary-500 rounded">
+                                <label for="reading" class="text-sm text-gray-700">📚 Reading</label>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" id="gaming" name="hobbies" value="gaming" class="w-4 h-4 text-primary-500 focus:ring-primary-500 rounded">
+                                <label for="gaming" class="text-sm text-gray-700">🎮 Gaming</label>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" id="sports" name="hobbies" value="sports" class="w-4 h-4 text-primary-500 focus:ring-primary-500 rounded">
+                                <label for="sports" class="text-sm text-gray-700">⚽ Sports</label>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" id="music" name="hobbies" value="music" class="w-4 h-4 text-primary-500 focus:ring-primary-500 rounded">
+                                <label for="music" class="text-sm text-gray-700">🎵 Music</label>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" id="cooking" name="hobbies" value="cooking" class="w-4 h-4 text-primary-500 focus:ring-primary-500 rounded">
+                                <label for="cooking" class="text-sm text-gray-700">🍳 Cooking</label>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" id="travel" name="hobbies" value="travel" class="w-4 h-4 text-primary-500 focus:ring-primary-500 rounded">
+                                <label for="travel" class="text-sm text-gray-700">✈️ Travel</label>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" id="photography" name="hobbies" value="photography" class="w-4 h-4 text-primary-500 focus:ring-primary-500 rounded">
+                                <label for="photography" class="text-sm text-gray-700">📷 Photography</label>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" id="art" name="hobbies" value="art" class="w-4 h-4 text-primary-500 focus:ring-primary-500 rounded">
+                                <label for="art" class="text-sm text-gray-700">🎨 Art</label>
+                            </div>
+                        </div>
+                        <div class="error-message text-red-500 text-sm mt-1 hidden" id="hobbiesError"></div>
+                        <div class="success-message text-green-500 text-sm mt-1 hidden" id="hobbiesSuccess">✓ Nice choices!</div>
+                    </div>
+
+                    <!-- Country -->
+                    <div class="space-y-2">
+                        <label for="country" class="block text-sm font-semibold text-gray-700">
+                            Country <span class="text-red-500">*</span>
+                        </label>
+                        <select id="country" name="country" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-gray-50 text-gray-900 transition-all duration-300 focus:outline-none focus:border-primary-500 focus:bg-white input-focus">
+                            <option value="">Select your country</option>
+                            <option value="us">🇺🇸 United States</option>
+                            <option value="ph">🇵🇭 Philippines</option>
+                            <option value="ca">🇨🇦 Canada</option>
+                            <option value="uk">🇬🇧 United Kingdom</option>
+                            <option value="au">🇦🇺 Australia</option>
+                            <option value="de">🇩🇪 Germany</option>
+                            <option value="fr">🇫🇷 France</option>
+                            <option value="jp">🇯🇵 Japan</option>
+                            <option value="sg">🇸🇬 Singapore</option>
+                            <option value="kr">🇰🇷 South Korea</option>
+                            <option value="in">🇮🇳 India</option>
+                            <option value="br">🇧🇷 Brazil</option>
+                            <option value="mx">🇲🇽 Mexico</option>
+                            <option value="other">🌍 Other</option>
+                        </select>
+                        <div class="error-message text-red-500 text-sm mt-1 hidden" id="countryError"></div>
+                        <div class="success-message text-green-500 text-sm mt-1 hidden" id="countrySuccess">✓ Country selected!</div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        class="w-full gradient-btn text-white font-semibold py-4 px-6 rounded-lg text-lg btn-hover-effect disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none mt-8" 
+                        id="submitBtn"
+                    >
+                        🚀 Create Account
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Real-time validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            const fields = {
+                fullName: document.getElementById('fullName'),
+                username: document.getElementById('username'),
+                email: document.getElementById('email'),
+                password: document.getElementById('password'),
+                confirmPassword: document.getElementById('confirmPassword'),
+                gender: document.querySelectorAll('input[name="gender"]'),
+                hobbies: document.querySelectorAll('input[name="hobbies"]'),
+                country: document.getElementById('country')
+            };
+
+            // Validation functions
+            function validateFullName() {
+                const value = fields.fullName.value.trim();
+                const errorEl = document.getElementById('fullNameError');
+                const successEl = document.getElementById('fullNameSuccess');
+                
+                if (value === '') {
+                    showError(fields.fullName, errorEl, successEl, 'Full name is required');
+                    return false;
+                } else if (value.length < 2) {
+                    showError(fields.fullName, errorEl, successEl, 'Full name must be at least 2 characters');
+                    return false;
+                } else if (!/^[a-zA-Z\s]+$/.test(value)) {
+                    showError(fields.fullName, errorEl, successEl, 'Full name can only contain letters and spaces');
+                    return false;
+                }
+                showSuccess(fields.fullName, errorEl, successEl);
+                return true;
+            }
+
+            function validateUsername() {
+                const value = fields.username.value.trim();
+                const errorEl = document.getElementById('usernameError');
+                const successEl = document.getElementById('usernameSuccess');
+                
+                if (value === '') {
+                    showError(fields.username, errorEl, successEl, 'Username is required');
+                    return false;
+                } else if (value.length < 3) {
+                    showError(fields.username, errorEl, successEl, 'Username must be at least 3 characters');
+                    return false;
+                } else if (!/^[a-zA-Z0-9_]+$/.test(value)) {
+                    showError(fields.username, errorEl, successEl, 'Username can only contain letters, numbers, and underscores');
+                    return false;
+                }
+                showSuccess(fields.username, errorEl, successEl);
+                return true;
+            }
+
+            function validateEmail() {
+                const value = fields.email.value.trim();
+                const errorEl = document.getElementById('emailError');
+                const successEl = document.getElementById('emailSuccess');
+                
+                if (value === '') {
+                    showError(fields.email, errorEl, successEl, 'Email is required');
+                    return false;
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                    showError(fields.email, errorEl, successEl, 'Please enter a valid email address');
+                    return false;
+                }
+                showSuccess(fields.email, errorEl, successEl);
+                return true;
+            }
+
+            function validatePassword() {
+                const value = fields.password.value;
+                const errorEl = document.getElementById('passwordError');
+                const successEl = document.getElementById('passwordSuccess');
+                
+                if (value === '') {
+                    showError(fields.password, errorEl, successEl, 'Password is required');
+                    return false;
+                } else if (value.length < 8) {
+                    showError(fields.password, errorEl, successEl, 'Password must be at least 8 characters long');
+                    return false;
+                } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(value)) {
+                    showError(fields.password, errorEl, successEl, 'Password must contain uppercase, lowercase, and number');
+                    return false;
+                }
+                showSuccess(fields.password, errorEl, successEl);
+                
+                // Re-validate confirm password if it has a value
+                if (fields.confirmPassword.value) {
+                    validateConfirmPassword();
+                }
+                return true;
+            }
+
+            function validateConfirmPassword() {
+                const password = fields.password.value;
+                const confirmPassword = fields.confirmPassword.value;
+                const errorEl = document.getElementById('confirmPasswordError');
+                const successEl = document.getElementById('confirmPasswordSuccess');
+                
+                if (confirmPassword === '') {
+                    showError(fields.confirmPassword, errorEl, successEl, 'Please confirm your password');
+                    return false;
+                } else if (password !== confirmPassword) {
+                    showError(fields.confirmPassword, errorEl, successEl, 'Passwords do not match');
+                    return false;
+                }
+                showSuccess(fields.confirmPassword, errorEl, successEl);
+                return true;
+            }
+
+            function validateGender() {
+                const checked = Array.from(fields.gender).some(radio => radio.checked);
+                const errorEl = document.getElementById('genderError');
+                const successEl = document.getElementById('genderSuccess');
+                
+                if (!checked) {
+                    errorEl.textContent = 'Please select your gender';
+                    errorEl.classList.remove('hidden');
+                    successEl.classList.add('hidden');
+                    return false;
+                }
+                errorEl.classList.add('hidden');
+                successEl.classList.remove('hidden');
+                return true;
+            }
+
+            function validateHobbies() {
+                const checked = Array.from(fields.hobbies).some(checkbox => checkbox.checked);
+                const errorEl = document.getElementById('hobbiesError');
+                const successEl = document.getElementById('hobbiesSuccess');
+                
+                if (!checked) {
+                    errorEl.textContent = 'Please select at least one hobby';
+                    errorEl.classList.remove('hidden');
+                    successEl.classList.add('hidden');
+                    return false;
+                }
+                errorEl.classList.add('hidden');
+                successEl.classList.remove('hidden');
+                return true;
+            }
+
+            function validateCountry() {
+                const value = fields.country.value;
+                const errorEl = document.getElementById('countryError');
+                const successEl = document.getElementById('countrySuccess');
+                
+                if (value === '') {
+                    showError(fields.country, errorEl, successEl, 'Please select your country');
+                    return false;
+                }
+                showSuccess(fields.country, errorEl, successEl);
+                return true;
+            }
+
+            function showError(field, errorEl, successEl, message) {
+                field.classList.add('border-red-500', 'bg-red-50');
+                field.classList.remove('border-green-500', 'bg-green-50', 'border-gray-200', 'bg-gray-50');
+                errorEl.textContent = message;
+                errorEl.classList.remove('hidden');
+                successEl.classList.add('hidden');
+            }
+
+            function showSuccess(field, errorEl, successEl) {
+                field.classList.remove('border-red-500', 'bg-red-50', 'border-gray-200', 'bg-gray-50');
+                field.classList.add('border-green-500', 'bg-green-50');
+                errorEl.classList.add('hidden');
+                successEl.classList.remove('hidden');
+            }
+
+            // Add event listeners
+            fields.fullName.addEventListener('blur', validateFullName);
+            fields.fullName.addEventListener('input', validateFullName);
+            
+            fields.username.addEventListener('blur', validateUsername);
+            fields.username.addEventListener('input', validateUsername);
+            
+            fields.email.addEventListener('blur', validateEmail);
+            fields.email.addEventListener('input', validateEmail);
+            
+            fields.password.addEventListener('blur', validatePassword);
+            fields.password.addEventListener('input', validatePassword);
+            
+            fields.confirmPassword.addEventListener('blur', validateConfirmPassword);
+            fields.confirmPassword.addEventListener('input', validateConfirmPassword);
+            
+            fields.gender.forEach(radio => {
+                radio.addEventListener('change', validateGender);
+            });
+            
+            fields.hobbies.forEach(checkbox => {
+                checkbox.addEventListener('change', validateHobbies);
+            });
+            
+            fields.country.addEventListener('change', validateCountry);
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const isValid = [
+                    validateFullName(),
+                    validateUsername(),
+                    validateEmail(),
+                    validatePassword(),
+                    validateConfirmPassword(),
+                    validateGender(),
+                    validateHobbies(),
+                    validateCountry()
+                ].every(Boolean);
+                
+                if (isValid) {
+                    // Get selected hobbies
+                    const selectedHobbies = Array.from(fields.hobbies)
+                        .filter(cb => cb.checked)
+                        .map(cb => cb.value);
+                    
+                    // Get selected gender
+                    const selectedGender = Array.from(fields.gender)
+                        .find(radio => radio.checked).value;
+                    
+                    const formData = {
+                        fullName: fields.fullName.value.trim(),
+                        username: fields.username.value.trim(),
+                        email: fields.email.value.trim(),
+                        password: fields.password.value,
+                        gender: selectedGender,
+                        hobbies: selectedHobbies,
+                        country: fields.country.value
+                    };
+                    
+                    alert(`🎉 Registration Successful!\n\n` +
+                          `Name: ${formData.fullName}\n` +
+                          `Username: ${formData.username}\n` +
+                          `Email: ${formData.email}\n` +
+                          `Gender: ${formData.gender}\n` +
+                          `Hobbies: ${formData.hobbies.join(', ')}\n` +
+                          `Country: ${fields.country.options[fields.country.selectedIndex].text}`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

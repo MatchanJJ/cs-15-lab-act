@@ -2,7 +2,7 @@ const InputError = ({
   messages = [],
   className = "",
 }: {
-  messages: [];
+  messages: string[];
   className?: string;
 }) => (
   <>
